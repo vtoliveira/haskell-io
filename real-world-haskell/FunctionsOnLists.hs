@@ -54,3 +54,14 @@ splitWith' pred xs = case dropWhile (not . pred) xs of
                         [] -> []
                         nonEmpty -> pref: splitWith' pred suf
                             where (pref, suf) = span pred nonEmpty
+
+max' :: (Ord a) => [a] -> a
+max' (x:xs) = foldl (\acc elem -> if acc > elem 
+                                  then acc 
+                                  else elem) x xs
+
+pairToList :: (a, a) -> [a]
+pairToList (x, y) = [x, y]
+
+tuplesToList :: [(a, a)] -> [[a]]
+tuplesToList = map pairToList
